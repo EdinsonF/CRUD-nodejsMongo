@@ -1,0 +1,56 @@
+<%- include('partials/_cabecera') %>
+
+    <pre>
+    </pre>
+    <div class="container">
+        <div class="row">
+            <!-- FORMULARIO -->
+            <div class="col-md-5">
+                <div class="card">
+                    <div class="card-body">
+                        <form action="/add" method="post">
+                            <div class="form-group">
+                                <input type="text" name="titulo" placeholder="Titulo" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <textarea name="descripcion" placeholder="Descripción" cols="80" class="form-control"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">
+                                Agregar
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- LISTA -->
+            <div class="col-md-7">
+                <table class="table table-border table-hover">
+                    <thead>
+                        <tr>
+                            <th>N°</th>
+                            <th>Titulo</th>
+                            <th>Descripción</th>
+                            <th>Operacion</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <% registros.forEach((reg, index) => { %>
+                            <tr>
+                                <td><%= index +1%></td>
+                                <td><%= reg.titulo%></td>
+                                <td><%= reg.descripcion%></td>
+                                <td>
+                                    <a href="" class="btn btn-dark">Listo</a>
+                                    <a href="" class="btn btn-info">Editar</a>
+                                    <a href="/delete/<%= reg._id%>" class="btn btn-danger">Eliminar</a>
+                                </td>
+                            </tr>
+                       <% });%>
+                    </tbody>
+                </table>
+            </div>
+        </div>   
+    </div>
+
+<%- include('partials/_pie') %>
