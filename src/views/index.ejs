@@ -3,14 +3,17 @@
     <pre>
     </pre>
     <div class="container">
+
+        
         <div class="row">
             <!-- FORMULARIO -->
             <div class="col-md-5">
+                <%- include('partials/mensajes') %>
                 <div class="card">
                     <div class="card-body">
                         <form action="/add" method="post">
                             <div class="form-group">
-                                <input type="text" name="titulo" placeholder="Titulo" class="form-control">
+                                <input type="text" name="titulo" placeholder="Titulo" id="titulo" class="form-control">
                             </div>
                             <div class="form-group">
                                 <textarea name="descripcion" placeholder="Descripción" cols="80" class="form-control"></textarea>
@@ -41,8 +44,8 @@
                                 <td><%= reg.titulo%></td>
                                 <td><%= reg.descripcion%></td>
                                 <td>
-                                    <a href="" class="btn btn-dark">Listo</a>
-                                    <a href="" class="btn btn-info">Editar</a>
+                                    <a href="/status/<%= reg._id%>" class="btn <%= reg.estado  ? 'btn-success' :  'btn-dark' %>">Listo</a>
+                                    <a href="/edit/<%= reg._id%>" class="btn btn-info">Editar</a>
                                     <a href="/delete/<%= reg._id%>" class="btn btn-danger">Eliminar</a>
                                 </td>
                             </tr>
